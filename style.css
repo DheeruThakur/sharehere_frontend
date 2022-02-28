@@ -135,7 +135,7 @@ body {
   width: var(--width);
   margin-bottom: 20px;
 
-  /* display: none; */
+  display: none;
 }
 .sharing-container .input-container {
   position: relative;
