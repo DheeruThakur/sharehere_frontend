@@ -1,0 +1,247 @@
+:root {
+  --main-bg-color: #eff5fe;
+  --width: 500px;
+}
+
+body,
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--main-bg-color);
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+body,
+.drop-zone,
+.upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body {
+  flex-direction: row;
+}
+
+.upload-container {
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.drop-zone {
+  border: 2px dashed rgb(61, 60, 60);
+  border-radius: 10px;
+  min-height: 200px;
+  width: var(--width);
+  margin: 30px;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.icon-container {
+  width: 75px;
+  height: 100px;
+  position: relative;
+}
+
+.icon-container img {
+  width: 70px;
+  position: absolute;
+  transition: transform 250ms ease-in-out;
+}
+
+.icon-container .right,
+.icon-container .left {
+  filter: grayscale(0.5);
+}
+
+.icon-container .centre {
+  z-index: 2;
+}
+.dragged .icon-container .right {
+  transform: rotate(10deg) translateX(20px) scale(0.9);
+  transform-origin: bottom;
+}
+.dragged .icon-container .left {
+  transform: rotate(-10deg) translateX(-20px) scale(0.9);
+  transform-origin: bottom;
+}
+.dragged .icon-container .centre {
+  transform: translateY(-5px);
+}
+
+.dragged.drop-zone {
+  background-color: var(--main-bg-color);
+  border-color: blue;
+}
+
+.browse {
+  color: blue;
+  cursor: pointer;
+}
+
+#fileinput {
+  display: none;
+}
+
+.progress-container {
+  width: var(--width);
+  height: 70px;
+  border: 2px dashed rgb(61, 60, 60);
+  margin-bottom: 25px;
+  border-radius: 10px;
+  position: relative;
+  display: none;
+}
+
+.progress-container .bg-progress {
+  height: 100%;
+  width: 0%;
+  background-color: var(--main-bg-color);
+  border-radius: 3%;
+
+  transition: width 0.25s linear;
+  position: absolute;
+}
+
+.progress-container .inner-container {
+  position: absolute;
+  margin: 10px 15px;
+  z-index: 1;
+  width: calc(100% - 30px);
+}
+
+.percent-container {
+  font-size: 13px;
+  opacity: 0.8;
+  margin: 5px;
+}
+
+.progress-bar {
+  height: 3px;
+  width: 100%;
+  background-color: blue;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.25s linear;
+}
+
+.sharing-container {
+  width: var(--width);
+  margin-bottom: 20px;
+
+  /* display: none; */
+}
+.sharing-container .input-container {
+  position: relative;
+}
+
+.sharing-container .input-container input {
+  height: 40px;
+  width: 100%;
+  border: 2px dashed rgb(61, 60, 60);
+  padding: 5px 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: var(--main-bg-color);
+  color: rgb(106, 104, 104);
+}
+
+.input-container img {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 8.5px;
+  left: 470px;
+  cursor: pointer;
+}
+
+p {
+  opacity: 0.8;
+  text-align: center;
+}
+
+.sharing-container .email-container {
+  display: flex;
+  align-items: center;
+  border: 2px dashed rgb(61, 60, 60);
+  padding: 10px 30px;
+  border-radius: 10px;
+  /* background-color: var(--main-bg-color); */
+}
+
+.email-container form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.email-container .field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 400px;
+}
+
+.email-container label {
+  font-size: 18px;
+}
+.email-container input {
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.email-container input:focus {
+  outline: none;
+}
+
+.send-btn {
+  border-style: none;
+  margin-top: 10px;
+  padding: 8px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: var(--main-bg-color);
+  cursor: pointer;
+}
+
+.toast {
+  position: absolute;
+  background-color: rgb(78, 78, 208);
+  padding: 10px 20px;
+  border-radius: 5px;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 60px);
+  transition: transform 0.2s ease-in-out;
+  color: #eff5fe;
+  font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.background {
+  background: url("./background.svg") no-repeat center;
+  background-size: contain;
+  height: 50vh;
+  width: 50vw;
+}
+
+@media screen and (max-width: 900px) {
+  :root {
+    --width: 320px;
+  }
+  .email-container .field {
+    flex-direction: column;
+    width: 300px;
+  }
+}
