@@ -72,7 +72,7 @@ const uploadFile = () => {
   progressContainer.style.display = "block";
 
   const formData = new FormData();
-  formData.append("myfile", file);
+  formData.append("myfile", file[0]);
 
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
