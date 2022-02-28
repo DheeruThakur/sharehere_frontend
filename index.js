@@ -27,15 +27,23 @@ dropZone.addEventListener("dragover", (e) => {
 dropZone.addEventListener("dragleave", () => {
   dropZone.classList.remove("dragged");
 });
+
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
-  dropZone.classList.remove("dragged");
+
   const files = e.dataTransfer.files;
-  console.log(files);
-  if (files.length) {
-    fileInput.files = files;
+  if (files.length === 1) {
+    if (files[0].size < fileSize) {
+      fileInput.files = files;
+      uploadFile();
+    } else {
+      showToast("Max file size is 100MB");
+    }
+  } else if (files.length > 1) {
+    showToast("You can't upload multiple files");
   }
-  uploadFile();
+
+  dropZone.classList.remove("dragged");
 });
 
 fileInput.addEventListener("change", () => {
