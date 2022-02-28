@@ -103,6 +103,7 @@ const uploadFile = () => {
 const updateProgress = (e) => {
   const percentage = Math.round((e.loaded / e.total) * 100);
   console.log(percentage);
+
   bgProgress.style.width = `${percentage}%`;
   percentDiv.innerHTML = percentage;
   progressBar.style.transform = `scaleX(${percentage / 100})`;
