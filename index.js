@@ -11,7 +11,7 @@ const emailContainer = document.querySelector(".form-container");
 const toast = document.querySelector(".toast");
 const fileSize = 100 * 1024 * 1024;
 
-const host = "https://calm-sandals-hare.cyclic.app/";
+const host = "https://sharehereapp-production.up.railway.app/";
 const uploadUrl = `${host}api/files`;
 const emailUrl = `${host}api/files/send`;
 
